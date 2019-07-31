@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/app_gradient"
+    android:orientation="vertical"
     android:weightSum="1">
 
     <ImageView
@@ -15,7 +15,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="55dp"
         android:layout_weight="0.07"
         android:gravity="center"
         android:text="@string/st_welcome"
@@ -25,7 +25,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="37dp"
         android:layout_weight="0.05"
         android:gravity="center"
         android:text="@string/st_login_message"
@@ -35,10 +35,10 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="51dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_marginTop="50dp"
+        android:layout_marginRight="10dp"
         android:layout_weight="0.1"
         android:drawableStart="@drawable/phone"
         android:hint="@string/st_contact"
@@ -46,9 +46,9 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="70dp"
         android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
         android:layout_weight="0.1"
         android:drawableStart="@drawable/lock"
@@ -56,31 +56,42 @@
         android:textColor="@color/color_default" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:text="@string/st_signin"
-        android:textColor="@color/color_text_register"
-        android:gravity="center"
+        android:layout_width="151dp"
+        android:layout_height="40dp"
         android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_weight="0.08"
         android:background="@drawable/btm_rounded"
-        android:layout_weight="0.08"/>
+        android:gravity="center"
+        android:text="@string/st_signin"
+        android:textColor="@color/color_text_register" />
 
     <CheckBox
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_width="228dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
         android:layout_weight="0.05"
         android:gravity="center"
         android:text="@string/st_rem_password" />
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="20dp"
         android:layout_weight="0.05"
-        android:layout_marginTop="50dp"
         android:gravity="center"
         android:text="@string/st_acc_message"
         android:textColor="@color/color_bg_register"
         android:textSize="15sp"
         android:visibility="visible" />
+
+    <ImageView
+        android:layout_width="390dp"
+        android:layout_height="116dp"
+        android:layout_gravity="bottom"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.1"
+        android:scaleType="fitEnd"
+        android:src="@drawable/bgimage" />
 </LinearLayout>
