@@ -35,7 +35,8 @@
         android:text="@string/st_login_message"
         android:textColor="@color/color_default"
         android:textSize="15sp"
-        android:visibility="visible" />
+        android:visibility="visible"
+        />
 
     <EditText
         android:layout_width="383dp"
@@ -47,7 +48,8 @@
         android:drawableStart="@drawable/phone"
         android:drawablePadding="20dp"
         android:hint="@string/st_contact"
-        android:textColor="@color/color_default" />
+        android:textColor="@color/color_default"
+        android:inputType="number"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -57,9 +59,11 @@
         android:layout_marginRight="10dp"
         android:layout_weight="0.1"
         android:drawableStart="@drawable/lock"
+        android:drawableEnd="@drawable/hide_password"
         android:drawablePadding="20dp"
         android:hint="@string/st_password"
-        android:textColor="@color/color_default" />
+        android:textColor="@color/color_default"
+        android:inputType="textPassword"/>
 
     <Button
         android:layout_width="151dp"
