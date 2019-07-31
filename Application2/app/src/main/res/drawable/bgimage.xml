@@ -3,6 +3,6 @@
         <item>
             <bitmap android:src="@drawable/login_bacground"
                 android:gravity="bottom"
-                a></bitmap>
+                ></bitmap>
         </item>
 </selector>

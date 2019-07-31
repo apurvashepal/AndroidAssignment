@@ -27,6 +27,6 @@
     <string name="st_login_message">Please log in to get Started</string>
     <string name="st_signin">SIGN IN</string>
     <string name="st_rem_password">Remember Password</string>
-    <string name="st_acc_message">Don't have an account? </string>
+    <string name="st_acc_message">Don\'t have an account? </string>
     <string name="st_space">     </string>
 </resources>

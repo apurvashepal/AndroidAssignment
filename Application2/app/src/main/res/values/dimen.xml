@@ -6,6 +6,6 @@
     <item type="id" name="password"/>
     <item type="id" name="btn_Register"/>
 
-    <item type="id" name="add"/>
+    <item type="id" name="btn_login"/>
     <item type="id" name="subtract"/>
 </resources>
