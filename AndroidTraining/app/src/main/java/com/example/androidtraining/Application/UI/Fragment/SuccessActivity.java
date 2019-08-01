@@ -10,9 +10,10 @@ import com.example.androidtraining.Application.UI.Activity.Aunthentication;
 import com.example.androidtraining.R;
 
 public class SuccessActivity extends Activity {
-
+    public static final String TagSuccess="Success";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
 

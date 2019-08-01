@@ -32,7 +32,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View  mView=inflater.inflate(R.layout.login,container,false);
+        mView=inflater.inflate(R.layout.login,container,false);
         mSignIn=mView.findViewById(R.id.l_signin);
         mText = mView.findViewById(R.id.l_register);
 
@@ -50,10 +50,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             case R.id.l_signin:
                 if(isValid()){
                     Toast.makeText(getActivity(),"Login Successful",Toast.LENGTH_LONG).show();
+
                 }
                 else
                     Toast.makeText(getActivity(),"Username and Password Not Matching",Toast.LENGTH_LONG).show();
-
                 break;
             case R.id.l_register:
                 ((Aunthentication) getActivity()).loadFragment(R.id.fragment_lay,new RegisterFragment(),"Registration",true);
@@ -64,16 +64,22 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
 
     private boolean isValid() {
-        EditText contact,password;
-        contact= mView.findViewById(R.id.l_contact);
-        password=mView.findViewById(R.id.l_password);
-        String c=contact.toString();
-        String p=password.toString();
-        int valid =c.compareTo(p);
+        EditText mcontact,mpassword;
+        mcontact= mView.findViewById(R.id.l_contact);
+        mpassword=mView.findViewById(R.id.l_password);
+        String contact=mcontact.getText().toString();
+        String password=mpassword.getText().toString();
+
+        int valid =contact.compareTo(password);
+        if(contact.isEmpty() ){
+            mcontact.setError("Username should not be empty ");
+        }
+        if( password.isEmpty())
+            mpassword.setError("Password should not be empty");
         if (valid == 0) {
             return true;
-        }
-        else
+         }
+         else
             return false;
     }
 
