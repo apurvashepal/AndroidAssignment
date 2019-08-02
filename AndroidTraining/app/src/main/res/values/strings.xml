@@ -31,12 +31,12 @@
     <string name="st_rem_password">Remember Password</string>
     <string name="st_acc_message">Don\'t have an account? </string>
     <string name="st_space">     </string>
+    <string name="permission_read_phone_state_rationale">Give Permission</string>
 
 
-
-    <string-array name="country_array">
+    <string-array name="country_array" >
         <item>India</item>
-        <item>Shri-Lanka</item>
+        <item>ShriLanka</item>
     </string-array>
 
     <string-array name="state_array_India">

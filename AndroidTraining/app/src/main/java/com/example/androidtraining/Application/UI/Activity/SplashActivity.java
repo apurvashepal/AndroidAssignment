@@ -22,7 +22,7 @@ public class SplashActivity extends Activity {
                 SplashActivity.this.startActivity(mainIntent);
                 SplashActivity.this.finish();
             }
-        },5000);
+        },2000);
 
     }
 }

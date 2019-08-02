@@ -21,6 +21,7 @@
     <item type="id" name="r_imei2"/>
     <item type="id" name="r_signup"/>
     <item type="id" name="toolbar"/>
+    <item type="id" name="country_array"/>
     <!-- Id login-->
     <item type="id" name="l_contact"/>
     <item type="id" name="l_password"/>

@@ -1,9 +1,9 @@
 package com.example.androidtraining.Application.UI.Fragment;
 
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
-import android.content.Intent;
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 
@@ -24,10 +25,15 @@ import com.example.androidtraining.R;
 
 public class LoginFragment extends Fragment implements View.OnClickListener {
     public static final String TAG="Login";
+    private  EditText mcontact,mpassword;
+    private View  mView;
+    private Button mSignIn,mVisibility;
+    private TextView mText;
+    private boolean isPasswordVisible;
 
-    View  mView;
-    Button mSignIn,mRemPassword,mRegister;
-    TextView mText;
+    int setImage;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -35,7 +41,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         mView=inflater.inflate(R.layout.login,container,false);
         mSignIn=mView.findViewById(R.id.l_signin);
         mText = mView.findViewById(R.id.l_register);
-
         mSignIn.setOnClickListener(this);
         mText.setOnClickListener(this);
         return mView;
@@ -58,13 +63,16 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             case R.id.l_register:
                 ((Aunthentication) getActivity()).loadFragment(R.id.fragment_lay,new RegisterFragment(),"Registration",true);
 
+            case R.id.l_show_hide:
+                togglePassVisability();
+
 
         }
     }
 
 
     private boolean isValid() {
-        EditText mcontact,mpassword;
+
         mcontact= mView.findViewById(R.id.l_contact);
         mpassword=mView.findViewById(R.id.l_password);
         String contact=mcontact.getText().toString();
@@ -84,9 +92,26 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     }
 
 
+    private void togglePassVisability() {
+        mpassword=mView.findViewById(R.id.l_password);
+                if (!isPasswordVisible) {
+                    setImage = R.drawable.hide_password;
+                    mpassword.setTransformationMethod(new PasswordTransformationMethod());
+                }
+                else
+                {
+                    setImage =R.drawable.show_password;
+                    mpassword.setTransformationMethod(null);
+                }
+                isPasswordVisible= !isPasswordVisible;
+               // mVisibility.setImageDrawable( ContextCompat.getDrawable(getActivity().getApplicationContext(), setImage));
+
+            }
+        }
 
 
-}
+
+
 
 
 
