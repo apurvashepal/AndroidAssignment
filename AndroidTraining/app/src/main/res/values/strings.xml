@@ -99,4 +99,6 @@
         <item>Trincomalee</item>
             <item>Vavuniya</item>
     </string-array>
+    <string name="d_title">Invalid Input</string>
+    <string name="d_message">Please check you have entered correct data</string>
 </resources>

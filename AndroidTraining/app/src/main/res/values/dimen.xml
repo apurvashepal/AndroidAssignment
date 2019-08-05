@@ -29,4 +29,10 @@
     <item type="id" name="l_re_password"/>
     <item type="id" name="l_register"/>
     <item type="id" name="l_show_hide"/>
+
+
+    <item type="id" name="c_icon"/>
+    <item type="id" name="c_name"/>
+    <item type="id" name="c_information"/>
+    <item type="id" name="c_data"/>
 </resources>

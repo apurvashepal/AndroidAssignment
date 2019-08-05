@@ -1,5 +1,6 @@
 package com.example.androidtraining.Application.UI.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +21,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.androidtraining.Application.UI.Activity.Aunthentication;
 
+import com.example.androidtraining.Application.UI.RecyclerView.RecyclerViewActivity;
 import com.example.androidtraining.R;
 
 
@@ -27,11 +30,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     public static final String TAG="Login";
     private  EditText mcontact,mpassword;
     private View  mView;
-    private Button mSignIn,mVisibility;
+    private Button mSignIn;
+    private ImageButton mVisibility;
     private TextView mText;
     private boolean isPasswordVisible;
-
-    int setImage;
 
 
     @Nullable
@@ -39,15 +41,23 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mView=inflater.inflate(R.layout.login,container,false);
-        mSignIn=mView.findViewById(R.id.l_signin);
-        mText = mView.findViewById(R.id.l_register);
-        mSignIn.setOnClickListener(this);
-        mText.setOnClickListener(this);
+
         return mView;
 
         }
 
-
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mSignIn=mView.findViewById(R.id.l_signin);
+        mText = mView.findViewById(R.id.l_register);
+        mVisibility=mView.findViewById(R.id.l_show_hide);
+        mcontact= mView.findViewById(R.id.l_contact);
+        mpassword=mView.findViewById(R.id.l_password);
+        mSignIn.setOnClickListener(this);
+        mText.setOnClickListener(this);
+        mVisibility.setOnClickListener(this);
+    }
 
     public void onClick(View view)
     {    final LoginFragment context = this;
@@ -55,7 +65,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             case R.id.l_signin:
                 if(isValid()){
                     Toast.makeText(getActivity(),"Login Successful",Toast.LENGTH_LONG).show();
-
+                    Intent intent = new Intent(getActivity(), RecyclerViewActivity.class);
+                    startActivity(intent);
                 }
                 else
                     Toast.makeText(getActivity(),"Username and Password Not Matching",Toast.LENGTH_LONG).show();
@@ -66,24 +77,25 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             case R.id.l_show_hide:
                 togglePassVisability();
 
-
         }
     }
 
 
     private boolean isValid() {
 
-        mcontact= mView.findViewById(R.id.l_contact);
-        mpassword=mView.findViewById(R.id.l_password);
+
         String contact=mcontact.getText().toString();
         String password=mpassword.getText().toString();
 
-        int valid =contact.compareTo(password);
-        if(contact.isEmpty() ){
-            mcontact.setError("Username should not be empty ");
+
+        if(contact.isEmpty() ||contact.length()<10 ){
+            mcontact.setError("Invalid UserName ");
+            return false;
         }
-        if( password.isEmpty())
-            mpassword.setError("Password should not be empty");
+        if( password.isEmpty() || password.length()<10){
+            mpassword.setError("Invalid Password ");
+        return false;}
+        int valid =contact.compareTo(password);
         if (valid == 0) {
             return true;
          }
@@ -93,18 +105,20 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
 
     private void togglePassVisability() {
-        mpassword=mView.findViewById(R.id.l_password);
+
                 if (!isPasswordVisible) {
-                    setImage = R.drawable.hide_password;
+
                     mpassword.setTransformationMethod(new PasswordTransformationMethod());
+                    mVisibility.setImageDrawable( ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.eye));
                 }
                 else
                 {
-                    setImage =R.drawable.show_password;
+
                     mpassword.setTransformationMethod(null);
+                    mVisibility.setImageDrawable( ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.visibility));
                 }
                 isPasswordVisible= !isPasswordVisible;
-               // mVisibility.setImageDrawable( ContextCompat.getDrawable(getActivity().getApplicationContext(), setImage));
+
 
             }
         }

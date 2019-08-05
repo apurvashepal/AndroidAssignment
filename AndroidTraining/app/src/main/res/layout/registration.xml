@@ -44,7 +44,7 @@
                 android:textStyle="bold" />
 
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/r_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -176,6 +176,7 @@
                 android:layout_weight="0.06"></Spinner>
 
             <EditText
+                android:id="@+id/r_aadhar_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
