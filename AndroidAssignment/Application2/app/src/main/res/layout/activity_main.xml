@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    >
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/color_bg_register"
+            android:gravity="start"
+            android:text="@string/string_reg"
+            android:textColor="@color/color_text_register"
+            android:textSize="30sp"
+            android:visibility="visible"
+            android:layout_weight="0.09"
+
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+                        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.05"
+        android:text="@string/string_reg_info"
+        android:textColor="@color/color_default"
+        android:gravity="fill_horizontal"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:hint="@string/st_name"
+            android:textColor="@color/color_default"
+            android:layout_weight="0.059"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:inputType="textPersonName"
+            />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.059"
+        android:text="@string/st_gender"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="@color/color_default"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        />
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            tools:visibility="visible">
+
+            <RadioButton
+                android:layout_width="142dp"
+                android:layout_height="wrap_content"
+                android:text="@string/st_female" />
+
+            <RadioButton
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+
+                android:text="@string/st_male" />
+        </RadioGroup>
+
+    <EditText
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:hint="@string/st_age"
+        android:textColor="@color/color_default"
+        android:layout_weight="0.06"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:inputType="number"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:hint="@string/st_contact"
+        android:textColor="@color/color_default"
+        android:layout_weight="0.06"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:inputType="number"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:hint="@string/st_password"
+        android:textColor="@color/color_default"
+        android:layout_weight="0.059"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:inputType="textPassword"
+
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.05"
+        android:text="@string/st_address"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="@color/color_default"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.05"
+        android:text="@string/st_state"
+        android:textSize="15sp"
+        android:textColor="@color/color_default"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.06"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp">
+    </Spinner>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.05"
+        android:text="@string/st_district"
+        android:textSize="15sp"
+        android:textColor="@color/color_default"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.06"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp">
+    </Spinner>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.05"
+        android:text="@string/st_gram"
+        android:textSize="15sp"
+        android:textColor="@color/color_default"/>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.06"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp">
+    </Spinner>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="0.05"
+        android:text="@string/st_village"
+        android:textSize="15sp"
+        android:textColor="@color/color_default"
+        />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.06"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+    </Spinner>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:hint="@string/st_aadhar"
+        android:textColor="@color/color_default"
+        android:layout_weight="0.06"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:hint="@string/st_imei1"
+        android:textColor="@color/color_default"
+        android:layout_weight="0.06"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:hint="@string/st_imei2"
+        android:textColor="@color/color_default"
+        android:layout_weight="0.06"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        />
+        <Button
+            android:id="@+id/btn_Register"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="@string/st_signup"
+            android:textColor="@color/color_text_register"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:background="@drawable/btm_rounded"
+            android:layout_weight="0.08"
+            android:layout_marginTop="20dp"/>
+</androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.core.widget.NestedScrollView>
