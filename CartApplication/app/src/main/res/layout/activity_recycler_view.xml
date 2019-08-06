@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:scrollbars="vertical"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        
+
         >
 
     </androidx.recyclerview.widget.RecyclerView>
@@ -36,6 +36,8 @@
             android:layout_marginLeft="180dp"
             android:clickable="true"
             android:src="@drawable/shoppingcart"
+            android:scaleType="fitXY"
+            android:background="@color/toolbar_color"
             android:focusable="true"
             android:layout_marginStart="180dp"
             android:contentDescription="TODO" />
