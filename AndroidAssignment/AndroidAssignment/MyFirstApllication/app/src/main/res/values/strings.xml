@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MyFirstApllication</string>
+    <!-- For Login-->
+    <string name="t_username">Username</string>
+    <string name="t_password">Password</string>
+    <string name="t_login">Log In</string>
+    <string name="et_login_username">Enter Username</string>
+    <string name="et_login_password">Enter Password</string>
+    <!-- For Counter page -->
+    <string name="counter_string">your Counter</string>
+</resources>

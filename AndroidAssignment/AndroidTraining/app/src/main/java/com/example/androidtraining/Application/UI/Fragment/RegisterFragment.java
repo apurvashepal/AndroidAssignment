@@ -1,22 +1,15 @@
 package com.example.androidtraining.Application.UI.Fragment;
 
 import android.Manifest;
+
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Rect;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.text.method.PasswordTransformationMethod;
-import android.text.method.TransformationMethod;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -28,20 +21,23 @@ import android.telephony.TelephonyManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
+
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+
 import com.example.androidtraining.Application.UI.Activity.Aunthentication;
-import com.example.androidtraining.Application.UI.Activity.Utils;
+import com.example.androidtraining.Application.Utils;
 import com.example.androidtraining.R;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import com.example.androidtraining.Application.UI.*;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
 import static androidx.core.content.ContextCompat.checkSelfPermission;
+import static com.example.androidtraining.Application.UI.Fragment.LoginFragment.TAG;
 import static com.example.androidtraining.R.array.country_array;
 import static com.example.androidtraining.R.array.state_array_India;
 import static com.example.androidtraining.R.array.state_array_ShriLanka;
@@ -55,13 +51,11 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
     private Spinner mCountry, mState;
     private Button mRegister;
     private TelephonyManager tel;
-    EditText Imei1, Imei2;
+    EditText Imei1, Imei,mName,mpassword,mAge,mContact,mAadhar;
     private List<String> countryList = new ArrayList<>();
     private List<String> stateList1 = new ArrayList<>();
     private List<String> stateList2 = new ArrayList<>();
-    private ArrayAdapter<String> adapterState;
-    ArrayAdapter adapter;
-    EditText mName, mAge, mContact, mpassword, mAadhar, IMEI1, IMEI2;
+    private ArrayAdapter<String> adapterState1,adapterState2;
 
     @Nullable
 
@@ -75,21 +69,17 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mToolbar = mView.findViewById(R.id.toolbar);
-        mName =  mView.findViewById(R.id.r_name);
-        mAge = mView.findViewById(R.id.r_age);
-        mpassword=mView.findViewById(R.id.r_password);
-        mContact = mView.findViewById(R.id.r_contact);
         mRegister = mView.findViewById(R.id.btn_Register);
-        mCountry = mView.findViewById(R.id.r_country);
-        mState = mView.findViewById(R.id.r_state);
-        IMEI1=mView.findViewById(R.id.r_imei1);
-        mAadhar=mView.findViewById(R.id.r_aadhar_number);
+        mName = mView.findViewById(R.id.r_name);
+        mAge=mView.findViewById(R.id.r_age);
+        mContact=mView.findViewById(R.id.r_contact);
+        mpassword =mView.findViewById(R.id.r_password);
+        mAadhar = mView.findViewById(R.id.r_aadhar_number);
         addListenerOnSpinnerItemSelection();
-        setimei();
         mRegister.setOnClickListener(this);
 
 
-
+        setimei();
     }
 
     private void setimei() {
@@ -104,7 +94,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
         }
         TelephonyManager telephonyManager = (TelephonyManager) getContext().getSystemService(Context.TELEPHONY_SERVICE);
         String imei = telephonyManager.getDeviceId();  //Storing the IMEI Number.
-        IMEI1.setText(imei);
+        Imei1.setText(imei);
 
     }
     @Override
@@ -124,20 +114,24 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
     }
 
 
+
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btn_Register:
-                if (isValid()) {
-                    Toast.makeText(getActivity(), "Done!", Toast.LENGTH_LONG).show();
-                }
-                else
-                    Utils.AlertBox(getActivity(), getString(R.string.d_title), getString(R.string.d_message));
-                break;
+       try{ switch (view.getId()) {
+           case R.id.btn_Register:
+               if (isValid()) {
+                   ((Aunthentication) getActivity()).loadFragment(R.id.fragment_lay,new LoginFragment(),"Login",true);
+               }
+               break;
+           case R.id.r_country:
+               addListenerOnSpinnerItemSelection();
+               break;
 
-
-            default:
-        }
+           default:
+       }
+       }catch (Exception e){
+           Log.e(RTAG, "onClick: Invalid Data" );
+       }
     }
 
 
@@ -145,38 +139,15 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
 
 
 
-
-    private boolean isValid() {
-        String name,age,password,contact, aadhar;
-        name=mName.getText().toString();
-        age= mAge.getText().toString();
-        aadhar =mAadhar.getText().toString();
-        password= mpassword.getText().toString();
-        contact= mContact.getText().toString();
-            if (name.isEmpty()) {
-                Utils.AlertBox(getActivity(), getString(R.string.d_title), getString(R.string.d_message));
-            }
-        if (age.isEmpty())
-            Utils.AlertBox(getActivity(), getString(R.string.d_title), getString(R.string.d_message));
-        if (aadhar.isEmpty())
-            Utils.AlertBox(getActivity(), getString(R.string.d_title), getString(R.string.d_message));
-        if (password.isEmpty())
-            Utils.AlertBox(getActivity(), getString(R.string.d_title), getString(R.string.d_message));
-        if (contact.isEmpty())
-            Utils.AlertBox(getActivity(), getString(R.string.d_title), getString(R.string.d_message));
-        else
-            return false;
-        return true;
-    }
 
 
     private void addListenerOnSpinnerItemSelection() {
-
+        mCountry = mView.findViewById(R.id.r_country);
+        mState = mView.findViewById(R.id.r_state);
         countryList = Arrays.asList(getResources().getStringArray(country_array));
-        adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item,countryList);
+        ArrayAdapter adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item,countryList);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         mCountry.setAdapter(adapter);
-
         mCountry.setOnItemSelectedListener(this);
     }
 
@@ -184,24 +155,24 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        String country = adapter.getItem(i).toString();
-        if (country.equals("India")) {
+        String country = String.valueOf(adapterView.getSelectedItem());
+        if (country.contentEquals("India")) {
             stateList1 = Arrays.asList(getResources().getStringArray(state_array_India));
-            adapterState = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, stateList1);
-            adapterState.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-            mState.setAdapter(adapterState);
+            adapterState1 = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, stateList1);
+            adapterState1.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+            mState.setAdapter(adapterState1);
         }
-        if (country.equals("ShriLanka")) {
-            stateList2 = Arrays.asList(getResources().getStringArray(state_array_ShriLanka));
-            adapterState = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, stateList2);
-            adapterState.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-            mState.setAdapter(adapterState);
+        if (country.contentEquals("ShriLanka")) {
+            stateList2 = Arrays.asList(getResources().getStringArray(state_array_India));
+            adapterState2 = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, stateList2);
+            adapterState2.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+            mState.setAdapter(adapterState2);
         }
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
+        Utils.AlertBox(getActivity(),getString(R.string.d_title),getString(R.string.d_message));
     }
 
 

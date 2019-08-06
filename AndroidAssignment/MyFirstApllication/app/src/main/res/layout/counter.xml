@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    tools:context=".CounterActivity">
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:text="@string/counter_string"
+        android:layout_marginTop="200sp"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/mycounter"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="150dp"
+        android:gravity="center"
+        android:background="@drawable/btn_rounded"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+    <Button
+        android:id="@+id/add"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:text="+"
+        android:textSize="50dp"
+        android:gravity="center"
+        android:layout_gravity="left"
+        android:background="@drawable/btn_round"
+       android:layout_weight="0.5"/>
+    <Button
+        android:id="@+id/subtract"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:text="-"
+        android:textSize="50dp"
+        android:gravity="center"
+        android:layout_marginLeft="250dp"
+        android:layout_weight="0.5"
+        android:background="@drawable/btn_round"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</LinearLayout>

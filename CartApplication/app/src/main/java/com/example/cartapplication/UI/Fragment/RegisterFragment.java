@@ -1,22 +1,14 @@
-package com.example.androidtraining.Application.UI.Fragment;
+
+package com.example.cartapplication.UI.Fragment;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Rect;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.text.method.PasswordTransformationMethod;
-import android.text.method.TransformationMethod;
+import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -24,28 +16,21 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.Toolbar;
-import android.telephony.TelephonyManager;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import com.example.androidtraining.Application.UI.Activity.Aunthentication;
-import com.example.androidtraining.Application.UI.Activity.Utils;
-import com.example.androidtraining.R;
+
+import com.example.cartapplication.R;
+import com.example.cartapplication.UI.Utils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static androidx.core.content.ContextCompat.checkSelfPermission;
-import static com.example.androidtraining.R.array.country_array;
-import static com.example.androidtraining.R.array.state_array_India;
-import static com.example.androidtraining.R.array.state_array_ShriLanka;
-import static com.example.androidtraining.R.layout.registration;
+
 
 public class RegisterFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     public static final String RTAG = "Registration";
@@ -66,7 +51,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
     @Nullable
 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mView = inflater.inflate(registration, container, false);
+        mView = inflater.inflate(R.layout.registration, container, false);
 
         return mView;
     }
@@ -87,6 +72,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
         addListenerOnSpinnerItemSelection();
         setimei();
         mRegister.setOnClickListener(this);
+
 
 
 
@@ -172,7 +158,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
 
     private void addListenerOnSpinnerItemSelection() {
 
-        countryList = Arrays.asList(getResources().getStringArray(country_array));
+        countryList = Arrays.asList(getResources().getStringArray(R.array.country_array));
         adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item,countryList);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         mCountry.setAdapter(adapter);
@@ -186,13 +172,13 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
         String country = adapter.getItem(i).toString();
         if (country.equals("India")) {
-            stateList1 = Arrays.asList(getResources().getStringArray(state_array_India));
+            stateList1 = Arrays.asList(getResources().getStringArray(R.array.state_array_India));
             adapterState = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, stateList1);
             adapterState.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
             mState.setAdapter(adapterState);
         }
         if (country.equals("ShriLanka")) {
-            stateList2 = Arrays.asList(getResources().getStringArray(state_array_ShriLanka));
+            stateList2 = Arrays.asList(getResources().getStringArray(R.array.state_array_ShriLanka));
             adapterState = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, stateList2);
             adapterState.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
             mState.setAdapter(adapterState);
@@ -206,3 +192,4 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
 
 
 }
+

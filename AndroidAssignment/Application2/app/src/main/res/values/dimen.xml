@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <item type="id" name="name"/>
+    <item type="id" name="password"/>
+    <item type="id" name="btn_Register"/>
+
+    <item type="id" name="btn_login"/>
+    <item type="id" name="subtract"/>
+</resources>

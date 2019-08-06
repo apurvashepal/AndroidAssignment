@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:weightSum="1">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Login "
+        android:textSize="40dp"
+        android:gravity="center"
+        android:layout_weight="0.15"
+        android:textColor="@color/color_btn"
+    />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/t_username"
+        android:textSize="25dp"
+        android:layout_weight="0.08"
+        />
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:hint="@string/et_login_username"
+        android:layout_weight="0.1"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="@string/t_password"
+        android:textSize="25dp"
+        android:layout_weight="0.08"
+        />
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:hint="@string/et_login_password"
+        android:layout_weight="0.1"
+        />
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="@string/t_login"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_rounded"
+        android:layout_weight="0.08"/>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

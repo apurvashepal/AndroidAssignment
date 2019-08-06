@@ -34,7 +34,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.androidtraining.Application.UI.Activity.Aunthentication;
-import com.example.androidtraining.Application.UI.Activity.Utils;
+import com.example.androidtraining.Application.UI.Utils;
 import com.example.androidtraining.R;
 
 import java.util.ArrayList;
@@ -49,7 +49,7 @@ import static com.example.androidtraining.R.layout.registration;
 
 public class RegisterFragment extends Fragment implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     public static final String RTAG = "Registration";
-    public static final int PERMISSION_READ_STATE=1;
+    public static final int PERMISSION_READ_STATE = 1;
     private Toolbar mToolbar;
     private View mView;
     private Spinner mCountry, mState;
@@ -61,7 +61,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
     private List<String> stateList2 = new ArrayList<>();
     private ArrayAdapter<String> adapterState;
     ArrayAdapter adapter;
-    EditText mName, mAge, mContact, mpassword, mAadhar, IMEI1, IMEI2;
+    EditText mName, mAge, mContact, mpassword, mAadhar, mIMEI1, IMEI2;
 
     @Nullable
 
@@ -75,19 +75,17 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mToolbar = mView.findViewById(R.id.toolbar);
-        mName =  mView.findViewById(R.id.r_name);
+        mName = mView.findViewById(R.id.r_name);
         mAge = mView.findViewById(R.id.r_age);
-        mpassword=mView.findViewById(R.id.r_password);
         mContact = mView.findViewById(R.id.r_contact);
         mRegister = mView.findViewById(R.id.btn_Register);
         mCountry = mView.findViewById(R.id.r_country);
         mState = mView.findViewById(R.id.r_state);
-        IMEI1=mView.findViewById(R.id.r_imei1);
-        mAadhar=mView.findViewById(R.id.r_aadhar_number);
+        mIMEI1 = mView.findViewById(R.id.r_imei1);
+        mAadhar = mView.findViewById(R.id.r_aadhar_number);
         addListenerOnSpinnerItemSelection();
         setimei();
         mRegister.setOnClickListener(this);
-
 
 
     }
@@ -102,11 +100,12 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
             // We do not have this permission. Let's ask the user
             ActivityCompat.requestPermissions(this.getActivity(), new String[]{Manifest.permission.READ_PHONE_STATE}, PERMISSION_READ_STATE);
         }
-        TelephonyManager telephonyManager = (TelephonyManager) getContext().getSystemService(Context.TELEPHONY_SERVICE);
-        String imei = telephonyManager.getDeviceId();  //Storing the IMEI Number.
-        IMEI1.setText(imei);
+        TelephonyManager tel = (TelephonyManager) getContext().getSystemService(Context.TELEPHONY_SERVICE);
+        String imei = tel.getImei();  //Storing the IMEI Number.
+        mIMEI1.setText(imei);
 
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode,
                                            String permissions[], int[] grantResults) {
@@ -129,10 +128,9 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
         switch (view.getId()) {
             case R.id.btn_Register:
                 if (isValid()) {
-                    Toast.makeText(getActivity(), "Done!", Toast.LENGTH_LONG).show();
-                }
-                else
                     Utils.AlertBox(getActivity(), getString(R.string.d_title), getString(R.string.d_message));
+
+                }
                 break;
 
 
@@ -141,31 +139,20 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
     }
 
 
-
-
-
-
-
     private boolean isValid() {
-        String name,age,password,contact, aadhar;
-        name=mName.getText().toString();
-        age= mAge.getText().toString();
-        aadhar =mAadhar.getText().toString();
-        password= mpassword.getText().toString();
-        contact= mContact.getText().toString();
-            if (name.isEmpty()) {
+        if (mName.getText().toString().isEmpty() || mAge.getText().toString().isEmpty() || mAadhar.getText().toString().isEmpty() || mpassword.getText().toString().isEmpty() || mContact.getText().toString().isEmpty())
+            if (mName.getText().toString().isEmpty()) {
                 Utils.AlertBox(getActivity(), getString(R.string.d_title), getString(R.string.d_message));
             }
-        if (age.isEmpty())
+        if (mAge.getText().toString().isEmpty())
             Utils.AlertBox(getActivity(), getString(R.string.d_title), getString(R.string.d_message));
-        if (aadhar.isEmpty())
+        if (mAadhar.getText().toString().isEmpty())
             Utils.AlertBox(getActivity(), getString(R.string.d_title), getString(R.string.d_message));
-        if (password.isEmpty())
+        if (mpassword.getText().toString().isEmpty())
             Utils.AlertBox(getActivity(), getString(R.string.d_title), getString(R.string.d_message));
-        if (contact.isEmpty())
+        if (mContact.getText().toString().isEmpty())
             Utils.AlertBox(getActivity(), getString(R.string.d_title), getString(R.string.d_message));
-        else
-            return false;
+
         return true;
     }
 
@@ -173,13 +160,12 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
     private void addListenerOnSpinnerItemSelection() {
 
         countryList = Arrays.asList(getResources().getStringArray(country_array));
-        adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item,countryList);
+        adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, countryList);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         mCountry.setAdapter(adapter);
 
         mCountry.setOnItemSelectedListener(this);
     }
-
 
 
     @Override
@@ -203,6 +189,5 @@ public class RegisterFragment extends Fragment implements View.OnClickListener, 
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
-
 
 }
