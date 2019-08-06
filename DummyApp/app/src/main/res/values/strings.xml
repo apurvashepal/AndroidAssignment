@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DummyApp</string>
+
+    <string name="toolbar_text">Shopping cart</string>
+</resources>
