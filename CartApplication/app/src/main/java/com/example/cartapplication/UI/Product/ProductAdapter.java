@@ -15,10 +15,11 @@ import com.example.cartapplication.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
     private Context mContext;
     private List<Product> productList;
-    private IValueEntered valueEnteredListner;
+
+    private IProductOperations productAddListener;
     public ProductAdapter(Context context, List<Product> productList) {
         mContext = context;
         this.productList = productList;
@@ -32,6 +33,7 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         view = LayoutInflater.from(mContext).inflate(R.layout.grid_view_layout, parent, false);
+        view.setOnClickListener(this);
         return new ProductViewHolder(view);
     }
 
@@ -53,8 +55,17 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         return productList.size();
     }
 
+    @Override
+    public void onClick(View view) {
+        final Product product= productList.get(R.id.c_name);
+        if(productAddListener != null){
+            productAddListener.IAddtoCart(product);
+        }
 
-public class ProductViewHolder extends RecyclerView.ViewHolder {
+    }
+
+
+    public class ProductViewHolder extends RecyclerView.ViewHolder {
     ImageView prodImage;
     TextView prodName;
     TextView prodPrice;
@@ -70,7 +81,7 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
     }
 }
 
-    public void setValueEnteredListner(IValueEntered valueEnteredListner) {
+    public void setValueEnteredListner(IProductOperations valueEnteredListner) {
        // this.valueEnteredListner = valueEnteredListner;
     }
 }
