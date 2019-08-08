@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.cartapplication.R;
-import com.example.cartapplication.UI.Product.ProductFragment;
+import com.example.cartapplication.UI.Fragment.ProductFragment;
 
 
 public class CartActivity extends AppCompatActivity {
@@ -16,9 +16,11 @@ public class CartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler_view);
-        loadFragment(R.id.shopview, new ProductFragment(), "Product", false);
+        loadFragment(R.id.shopview , new ProductFragment(), "Product", false);
 
     }
+
+
     public void loadFragment(
             int containerId,
             Fragment fragment,

@@ -4,24 +4,24 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/shopview"
-
    >
 
-    <androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <androidx.recyclerview.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"
+        android:background="@color/color_text_register"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
 
-        >
-
-    </androidx.recyclerview.widget.RecyclerView>
-
+       />
     <Toolbar
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@color/toolbar_color">
+        android:background="@color/toolbar_color"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
         <TextView
             android:layout_width="wrap_content"
@@ -35,6 +35,7 @@
             android:layout_height="35dp"
             android:layout_marginLeft="180dp"
             android:clickable="true"
+            android:id="@+id/shoppingcart"
             android:src="@drawable/shoppingcart"
             android:scaleType="fitXY"
             android:background="@color/toolbar_color"
@@ -42,4 +43,5 @@
             android:layout_marginStart="180dp"
             android:contentDescription="TODO" />
     </Toolbar>
+
 </FrameLayout>
