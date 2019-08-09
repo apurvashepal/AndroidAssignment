@@ -19,6 +19,9 @@ import androidx.fragment.app.Fragment;
 
 import com.example.cartapplication.R;
 import com.example.cartapplication.UI.Activity.CartActivity;
+import com.example.cartapplication.UI.Application.Preferences;
+
+import static com.example.cartapplication.UI.Application.Preferences.Login;
 
 
 public class LoginFragment extends Fragment implements View.OnClickListener {
@@ -29,7 +32,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     private ImageButton mVisibility;
     private TextView mText;
     private boolean isPasswordVisible;
-
+    private Preferences preferences;
 
     @Nullable
     @Override
@@ -60,6 +63,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             case R.id.l_signin:
                 if(isValid()){
                     Toast.makeText(getActivity(),"Login Successful",Toast.LENGTH_LONG).show();
+                    Preferences.getInstance().setBoolean("Login" ,true);
                     Intent intent = new Intent(getActivity(), CartActivity.class);
                     startActivity(intent);
                 }

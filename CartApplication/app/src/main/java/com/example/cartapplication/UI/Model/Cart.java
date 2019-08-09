@@ -1,14 +1,16 @@
 package com.example.cartapplication.UI.Model;
 
+import com.example.cartapplication.UI.Database.Productentity;
+
 public class Cart {
-    Product product;
+    Productentity product;
     int Quantity;
 
-    public Product getProduct() {
+    public Productentity getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(Productentity product) {
         this.product = product;
     }
 

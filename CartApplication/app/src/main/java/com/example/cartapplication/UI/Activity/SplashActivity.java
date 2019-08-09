@@ -6,9 +6,10 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import com.example.cartapplication.R;
+import com.example.cartapplication.UI.Application.Preferences;
 
 public class SplashActivity extends Activity {
-
+    Preferences preference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,9 +19,16 @@ public class SplashActivity extends Activity {
             @Override
             public void run() {
                 /* Create an Intent that will start the Menu-Activity. */
+                if(Preferences.getInstance().getBoolean("Login")){
+                    setContentView(R.layout.activity_recycler_view);
+                    Intent intent = new Intent(SplashActivity.this, CartActivity.class);
+                    startActivity(intent);
+                }
+                else{
                 Intent mainIntent = new Intent(SplashActivity.this, Aunthentication.class);
                 SplashActivity.this.startActivity(mainIntent);
                 SplashActivity.this.finish();
+                }
             }
         },2000);
 

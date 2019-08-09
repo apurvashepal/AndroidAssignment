@@ -14,6 +14,12 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cartapplication.R;
+import com.example.cartapplication.UI.Application.MyApplication;
+import com.example.cartapplication.UI.Database.ProductRepository;
+import com.example.cartapplication.UI.Database.Productentity;
+import com.example.cartapplication.UI.Fragment.ProductFragment;
+import com.example.cartapplication.UI.Model.Cart;
+import com.example.cartapplication.UI.Model.Product;
 import com.example.cartapplication.UI.Product.IProductOperations;
 
 import java.util.ArrayList;
@@ -21,7 +27,7 @@ import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements View.OnClickListener {
     private Context mContext;
-    private List<Product> productList;
+    private List<Productentity> productList;
     private Product currentProduct;
     public CardView cardView;
     Cart cart;
@@ -32,7 +38,7 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     public View view;
 
-    public ProductAdapter(Context context, List<Product> productList) {
+    public ProductAdapter(Context context, List<Productentity> productList) {
         mContext = context;
         this.productList = productList;
 
@@ -53,7 +59,7 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
         final Product product = productList.get(position);
         if (holder instanceof ProductViewHolder) {
             final ProductViewHolder productHolder = (ProductViewHolder) holder;
@@ -66,9 +72,14 @@ public class ProductAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    setProductAddListener(productAddListener);
-                  //  productAddListener.IAddtoCart(product);
+                    Productentity productAdd =productList.get(position);
+                    productAddListener= new ProductFragment();
+                    productAddListener.IAddtoCart(productAdd);
                     productList.add(product);
+                    ProductRepository productRepository = new ProductRepository((MyApplication) MyApplication.getContext()){};
+                    productRepository.updateTask(product);
+
+
                     //Toast.makeText(mContext, "You have clicked" + product.getName() , Toast.LENGTH_SHORT).show();
 
                 }

@@ -40,8 +40,31 @@
             android:scaleType="fitXY"
             android:background="@color/toolbar_color"
             android:focusable="true"
+            android:visibility="visible"
+            android:layout_marginStart="180dp"
+            android:contentDescription="TODO" />
+        <Button
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="180dp"
+            android:clickable="true"
+            android:id="@+id/logout"
+            android:text="Log out"
+            android:scaleType="fitXY"
+            android:visibility="gone"
+            android:background="@color/toolbar_color"
+            android:focusable="true"
             android:layout_marginStart="180dp"
             android:contentDescription="TODO" />
     </Toolbar>
-
+    <TextView
+        android:background="@drawable/app_gradient"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/cart_total"
+        android:gravity="bottom"
+        android:layout_gravity="bottom"
+        android:text="Cart Total: "
+        android:textAlignment="center"
+        android:textSize="30dp"/>
 </FrameLayout>

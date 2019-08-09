@@ -11,6 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cartapplication.R;
+import com.example.cartapplication.UI.Database.Productentity;
+import com.example.cartapplication.UI.Model.Cart;
+import com.example.cartapplication.UI.Model.Product;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +23,7 @@ public class ShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     Context mContext;
     int counter;
     private List<Cart> shopList;
-
+    TextView textView;
     public ShopAdapter(Context context, List<Cart> productList) {
         mContext = context;
         this.shopList = productList;
@@ -45,26 +48,36 @@ public class ShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             final Cart product=shopList.get(position);
 
-            Product prod = product.getProduct();
+            Productentity prod = product.getProduct();
             if(holder instanceof ShopViewHolder){
             final ShopViewHolder shopViewHolder = (ShopViewHolder) holder;
             shopViewHolder.bookImage.setImageResource(prod.getImage());
             shopViewHolder.bookName.setText(prod.getName());
             String price = Integer.toString(prod.getPrice());
             shopViewHolder.bookPrice.setText(price);
-            shopViewHolder.bookQuantity.setText(product.getQuantity());
-            int total = getTotal(String.valueOf(product.getQuantity()),product.getQuantity());
+            shopViewHolder.bookQuantity.setText(Integer.toString(product.getQuantity()));
+            int total = getTotal(product.getQuantity(),prod.getPrice());
             shopViewHolder.totalPrice.setText(Integer.toString(total));
+
         }
     }
 
 
 
-    private int getTotal(String quantity,int price) {
-        int quantityT = Integer.parseInt(quantity);
-        return  quantityT*price;
-    }
+    private int getTotal(int quantity,int price) {
 
+        return  quantity*price;
+    }
+    public int getCartTotal(List<Cart> cartList) {
+        int cartTotal=0;
+
+        for(Cart cartitem: cartList) {
+            Productentity cartProduct =cartitem.getProduct();
+            cartTotal = cartTotal+ getTotal(cartitem.getQuantity(),cartProduct.getPrice());
+        }
+        return cartTotal;
+
+    }
 
     @Override
     public int getItemCount() {

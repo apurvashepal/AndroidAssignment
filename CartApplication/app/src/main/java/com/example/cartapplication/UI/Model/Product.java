@@ -10,8 +10,10 @@ public class Product extends Cart implements Parcelable{
     private String Name;
     private int price;
 
+  public   Product(){
 
-    protected Product(Parcel in) {
+    }
+    public Product(Parcel in) {
         id = in.readInt();
         image = in.readInt();
         Name = in.readString();
